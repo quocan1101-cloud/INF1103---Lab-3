@@ -23,8 +23,13 @@ def process_delivery(current_total, new_value):
 def calculate_tax(amount):
     return amount * tax_rate
 
+def generate_report(total_units, failed_attempts):
+    print(f"Total units in inventory: {total_units}")
+    print(f"Failed input attempts: {failed_attempts}")
+
 def main():
     inventory = 0
+    failed_attempts = 0
 
     while True:
         value = get_valid_input()
@@ -32,10 +37,12 @@ def main():
         if value == "quit":
             break
         if value is None:
+            failed_attempts += 1
             continue
 
         inventory = process_delivery(inventory, value)
         print (f"Current inventory: {inventory}")
         print (f"Tax on this delivery: {calculate_tax(value)}")
 
+    generate_report(inventory, failed_attempts)
 main()
