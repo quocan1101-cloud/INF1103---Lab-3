@@ -20,6 +20,9 @@ def get_valid_input():
 def process_delivery(current_total, new_value):
     return current_total + new_value
 
+def calculate_tax(amount):
+    return amount * tax_rate
+
 def main():
     inventory = 0
 
@@ -33,5 +36,6 @@ def main():
 
         inventory = process_delivery(inventory, value)
         print (f"Current inventory: {inventory}")
+        print (f"Tax on this delivery: {calculate_tax(value)}")
 
 main()
